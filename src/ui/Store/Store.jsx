@@ -6,7 +6,6 @@ import { ListView } from "./ListView";
 export const Store = () => {
   
   const [icon, setIcon] = useState("view_module")
-  let view = ''
   const products = [{
     name: "Nike Metcon 2",
     price: "130",
@@ -38,17 +37,12 @@ export const Store = () => {
     color: "green",
     img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/layouts/img/5.jpg"
   }];
-  if (icon === "view_module") {
-    view = < CardsView cards={products}/>
-  } else {
-    view = < ListView items={products} />
-  }
 
   return (<>
     <IconSwitch 
       icon={icon}
       onSwitch={setIcon}/>
-      {view}
+      {icon === "view_module" ? < CardsView cards={products}/> : < ListView items={products} />}
   </>
     
   )
